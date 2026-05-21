@@ -6,7 +6,7 @@ export const createInitialState = (levelPack, totalLevels) => ({
   lives: 3,
   status: 'playing',
   taps: 0,
-  memoryIndex: 0,
+  completed: false,
   ready: false,
   timerId: null,
   deadlineId: null,
@@ -18,7 +18,7 @@ export const getCurrentLevel = (state) => state.levels[state.currentIndex];
 export const resetRoundFlags = (state) => ({
   ...state,
   taps: 0,
-  memoryIndex: 0,
+  completed: false,
   ready: false,
   status: state.lives > 0 ? 'playing' : 'lost',
 });
