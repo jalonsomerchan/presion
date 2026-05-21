@@ -12,24 +12,12 @@ const screens = {
 };
 
 const elements = {
-  levelCurrent: query('[data-level-current]'),
-  levelTotal: query('[data-level-total]'),
-  stageCurrent: query('[data-stage-current]'),
-  stageTotal: query('[data-stage-total]'),
-  lives: query('[data-lives]'),
-  levelType: query('[data-level-type]'),
-  levelTitle: query('[data-level-title]'),
-  levelInstruction: query('[data-level-instruction]'),
   status: query('[data-status]'),
-  memoryStrip: query('[data-memory-strip]'),
   pressureButton: query('[data-pressure-button]'),
   buttonLabel: query('[data-button-label]'),
-  choiceGrid: query('[data-choice-grid]'),
   restart: query('[data-restart]'),
   backLevels: query('[data-back-levels]'),
-  card: query('[data-card]'),
   actionRing: query('[data-action-ring]'),
-  time: document.createElement('span'),
 };
 
 const levelSelect = query('[data-level-select]');
@@ -91,8 +79,7 @@ elements.backLevels.addEventListener('click', () => {
   if (game) {
     game.stop();
   }
-  renderLevelSelect();
-  showScreen('select');
+  showScreen('home');
 });
 
 renderLevelSelect();
