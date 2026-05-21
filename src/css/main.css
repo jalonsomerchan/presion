@@ -219,20 +219,67 @@ h1 {
 }
 
 .arena {
+  position: relative;
   display: grid;
   width: min(100%, 30rem);
   min-height: 100dvh;
   place-items: center;
   align-content: center;
   gap: 1rem;
+  overflow: hidden;
   border: 0;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
 }
 
+.arena[data-chaos="2"],
+.arena[data-chaos="3"] {
+  animation: arena-flicker 1.8s steps(2, end) infinite;
+}
+
+.chaos-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.chaos-ghost,
+.fake-button {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  animation-delay: var(--delay);
+}
+
+.chaos-ghost {
+  color: rgb(255 255 255 / 24%);
+  font-size: clamp(1rem, 5vw, 2.2rem);
+  font-weight: 780;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 1.2rem rgb(255 43 214 / 70%);
+  animation: ghost-glitch 1.5s linear infinite;
+}
+
+.fake-button {
+  min-width: 4rem;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 999px;
+  background: rgb(255 43 214 / 12%);
+  padding: 0.5rem 0.8rem;
+  color: rgb(255 255 255 / 46%);
+  font-size: 0.8rem;
+  font-weight: 720;
+  text-align: center;
+  animation: fake-button-drift 2.2s ease-in-out infinite;
+}
+
 .action-ring {
   --progress: 1;
+  position: relative;
+  z-index: 2;
   display: grid;
   width: min(22rem, 84vw);
   aspect-ratio: 1;
@@ -283,7 +330,17 @@ h1 {
   transform: scale(0.96);
 }
 
+.pressure-button.is-pressed {
+  animation: button-pop 260ms ease-out;
+}
+
+.arena[data-chaos="3"] .pressure-button {
+  animation: button-drift 2.4s ease-in-out infinite;
+}
+
 .challenge-status {
+  position: relative;
+  z-index: 2;
   min-height: 1.3rem;
   margin: 0;
   color: var(--color-muted);
@@ -293,6 +350,8 @@ h1 {
 }
 
 .controls {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
@@ -326,6 +385,68 @@ h1 {
 .action-ring[data-result="danger"] {
   animation: shake 220ms linear 2;
   box-shadow: 0 0 3rem rgb(251 44 54 / 34%);
+}
+
+@keyframes button-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes button-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0.25rem -0.2rem;
+  }
+}
+
+@keyframes arena-flicker {
+  0%,
+  100% {
+    filter: none;
+  }
+
+  50% {
+    filter: hue-rotate(18deg) contrast(1.2);
+  }
+}
+
+@keyframes ghost-glitch {
+  0%,
+  100% {
+    opacity: 0.12;
+    translate: 0 0;
+  }
+
+  50% {
+    opacity: 0.48;
+    translate: 0.35rem -0.25rem;
+  }
+}
+
+@keyframes fake-button-drift {
+  0%,
+  100% {
+    opacity: 0.2;
+    translate: 0 0;
+  }
+
+  50% {
+    opacity: 0.72;
+    translate: -0.3rem 0.4rem;
+  }
 }
 
 @keyframes shake {
