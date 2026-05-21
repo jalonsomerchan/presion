@@ -1,7 +1,7 @@
 {
-  "name": "js-template",
-  "version": "1.0.0",
-  "description": "Template moderno para proyectos HTML, CSS y JavaScript con Tailwind CSS.",
+  "name": "presion",
+  "version": "0.1.0",
+  "description": "Juego web de presión, reflejos y lógica tramposa con niveles configurables en JSON.",
   "type": "module",
   "private": false,
   "scripts": {
@@ -13,13 +13,11 @@
     "format:check": "prettier . --check"
   },
   "keywords": [
-    "html",
-    "css",
+    "game",
     "javascript",
     "tailwindcss",
     "vite",
-    "template",
-    "frontend"
+    "github-pages"
   ],
   "author": "Jorge Alonso",
   "license": "MIT",
