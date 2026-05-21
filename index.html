@@ -7,13 +7,10 @@
       name="description"
       content="Presión es un juego web de reflejos, nervios y lógica tramposa con niveles configurables en JSON. Pulsa, espera, memoriza y no caigas."
     />
-    <meta
-      property="og:title"
-      content="Presión · juego de reflejos y decisiones absurdas"
-    />
+    <meta property="og:title" content="Presión · juego de reflejos" />
     <meta
       property="og:description"
-      content="Un botón enorme, instrucciones sospechosas y niveles cada vez más tensos."
+      content="Un botón, instrucciones sospechosas y niveles cada vez más tensos."
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#120017" />
@@ -23,31 +20,31 @@
     <link rel="icon" href="./public/favicon.svg" type="image/svg+xml" />
   </head>
 
-  <body
-    class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"
-  >
+  <body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
     <a class="skip-link" href="#game">Saltar al juego</a>
 
     <main id="game" class="game-shell" aria-live="polite">
-      <section class="hero-panel" aria-labelledby="game-title">
-        <p class="eyebrow">modo presión activado</p>
-        <h1 id="game-title">Presión</h1>
-        <p class="hero-copy">
-          Un botón gigante. Reglas que cambian. Cero piedad. Los niveles viven
-          en JSON para que puedas ampliar el caos cuando quieras.
+      <section class="screen screen-home" data-screen="home" aria-labelledby="home-title">
+        <p class="eyebrow">modo presión</p>
+        <h1 id="home-title">Presión</h1>
+        <p class="screen-copy">
+          Lee rápido, no te fíes del botón y supera cada nivel para desbloquear el siguiente.
         </p>
+        <button class="primary-action" type="button" data-play>Jugar</button>
       </section>
 
-      <section class="arena" aria-label="Zona de juego">
+      <section class="screen is-hidden" data-screen="select" aria-labelledby="select-title">
+        <p class="eyebrow">elige nivel</p>
+        <h2 id="select-title">Niveles</h2>
+        <p class="screen-copy">Los niveles se desbloquean al superar el anterior.</p>
+        <div class="level-select" data-level-select></div>
+      </section>
+
+      <section class="arena is-hidden" data-screen="game" aria-label="Zona de juego">
         <div class="hud" aria-label="Estado de partida">
-          <p>
-            <span>Nivel</span><strong data-level-current>1</strong>/<strong
-              data-level-total
-              >0</strong
-            >
-          </p>
+          <p><span>Nivel</span><strong data-level-current>1</strong>/<strong data-level-total>4</strong></p>
+          <p><span>Etapa</span><strong data-stage-current>1</strong>/<strong data-stage-total>4</strong></p>
           <p><span>Vidas</span><strong data-lives>3</strong></p>
-          <p><span>Tiempo</span><strong data-time>--</strong></p>
         </div>
 
         <article class="challenge-card" data-card>
@@ -56,30 +53,20 @@
           <p class="challenge-copy" data-level-instruction>Cargando niveles.</p>
           <p class="challenge-status" data-status>Respira mientras puedas.</p>
 
-          <div
-            class="memory-strip"
-            data-memory-strip
-            aria-label="Secuencia a memorizar"
-          ></div>
+          <div class="memory-strip" data-memory-strip aria-label="Secuencia a memorizar"></div>
 
-          <button class="pressure-button" type="button" data-pressure-button>
-            <span data-button-label>pulsa</span>
-          </button>
+          <div class="action-ring" data-action-ring style="--progress: 1">
+            <button class="pressure-button" type="button" data-pressure-button>
+              <span data-button-label>pulsa</span>
+            </button>
 
-          <div
-            class="choice-grid"
-            data-choice-grid
-            aria-label="Opciones del nivel"
-          ></div>
+            <div class="choice-grid" data-choice-grid aria-label="Opciones del nivel"></div>
+          </div>
         </article>
 
         <div class="controls">
-          <button class="secondary-button" type="button" data-restart>
-            Reiniciar
-          </button>
-          <button class="secondary-button" type="button" data-next>
-            Nivel siguiente
-          </button>
+          <button class="secondary-button" type="button" data-back-levels>Elegir nivel</button>
+          <button class="secondary-button" type="button" data-restart>Reiniciar</button>
         </div>
       </section>
     </main>

@@ -1,7 +1,9 @@
-export const createInitialState = (levels) => ({
+export const createInitialState = (levelPack, totalLevels) => ({
   currentIndex: 0,
+  levelPack,
+  levels: levelPack.etapas,
+  totalLevels,
   lives: 3,
-  levels,
   status: 'playing',
   taps: 0,
   memoryIndex: 0,

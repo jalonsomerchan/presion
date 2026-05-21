@@ -4,9 +4,10 @@ import { FAIL_MESSAGES, WIN_MESSAGES, pickMessage } from './messages.js';
 import { clearGameTimers, startCountdown } from './timers.js';
 
 export class PressureGame {
-  constructor({ elements, state }) {
+  constructor({ elements, state, onLevelComplete }) {
     this.elements = elements;
     this.state = state;
+    this.onLevelComplete = onLevelComplete;
   }
 
   start() {
@@ -17,7 +18,6 @@ export class PressureGame {
   bindControls() {
     this.elements.pressureButton.addEventListener('click', () => this.handlePress());
     this.elements.restart.addEventListener('click', () => this.restart());
-    this.elements.next.addEventListener('click', () => this.winRound());
   }
 
   loadLevel() {
@@ -124,7 +124,14 @@ export class PressureGame {
     renderResult(this.elements, pickMessage(WIN_MESSAGES), 'success');
 
     window.setTimeout(() => {
-      this.state.currentIndex = (this.state.currentIndex + 1) % this.state.levels.length;
+      const nextIndex = this.state.currentIndex + 1;
+
+      if (nextIndex >= this.state.levels.length) {
+        this.onLevelComplete(this.state.levelPack.nivel);
+        return;
+      }
+
+      this.state.currentIndex = nextIndex;
       this.loadLevel();
     }, 850);
   }
@@ -149,5 +156,9 @@ export class PressureGame {
     this.state.currentIndex = 0;
     this.state.lives = 3;
     this.loadLevel();
+  }
+
+  stop() {
+    clearGameTimers(this.state);
   }
 }
