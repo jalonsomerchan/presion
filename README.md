@@ -8,6 +8,7 @@ Juego web de reflejos y decisiones tramposas inspirado en retos de botón bajo p
 - Juego modular con lógica separada en `src/js/game/`.
 - Niveles configurables en ficheros JSON dentro de `src/data/`.
 - Mecánicas centradas en un único botón: pulsar, no pulsar, esperar, contar pulsaciones y reaccionar a señales visuales.
+- A partir del nivel 2 aparecen efectos raros: parpadeos, textos fantasma, botones falsos y pequeñas interferencias.
 - Progreso de niveles guardado en `localStorage`.
 - Preparado para funcionar en dominio raíz, subruta y GitHub Pages.
 
