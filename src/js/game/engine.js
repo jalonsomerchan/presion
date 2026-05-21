@@ -1,5 +1,5 @@
 import { getCurrentLevel, resetRoundFlags } from './state.js';
-import { renderLevel, renderResult } from './render.js';
+import { renderLevel, renderResult, renderTapCount } from './render.js';
 import { FAIL_MESSAGES, WIN_MESSAGES, pickMessage } from './messages.js';
 import { clearGameTimers, startCountdown } from './timers.js';
 
@@ -25,12 +25,7 @@ export class PressureGame {
     this.state = resetRoundFlags(this.state);
     const level = getCurrentLevel(this.state);
 
-    renderLevel({
-      elements: this.elements,
-      level,
-      state: this.state,
-      onChoice: (choice) => this.handleChoice(choice),
-    });
+    renderLevel({ elements: this.elements, level });
 
     startCountdown({
       elements: this.elements,
@@ -42,8 +37,7 @@ export class PressureGame {
     if (level.type === 'waitThenTap') {
       this.state.timerId = window.setTimeout(() => {
         this.state.ready = true;
-        this.elements.buttonLabel.textContent = level.readyLabel ?? 'ahora';
-        renderResult(this.elements, 'Ahora sí.', 'warning');
+        this.elements.buttonLabel.textContent = level.readyText ?? 'Ahora';
       }, level.waitTime);
     }
   }
@@ -51,32 +45,18 @@ export class PressureGame {
   handlePress() {
     const level = getCurrentLevel(this.state);
 
-    if (level.type === 'tap') {
+    if (level.type === 'tap' || level.type === 'tapIfEmoji') {
       this.winRound();
       return;
     }
 
     if (level.type === 'waitThenTap') {
-      if (this.state.ready) {
-        this.winRound();
-        return;
-      }
-
-      this.failRound();
+      this.state.ready ? this.winRound() : this.failRound();
       return;
     }
 
-    if (level.type === 'multiTap') {
-      this.state.taps += 1;
-      renderResult(this.elements, `${this.state.taps}/${level.targetTaps} pulsaciones`, 'warning');
-
-      if (this.state.taps === level.targetTaps) {
-        this.winRound();
-      }
-
-      if (this.state.taps > level.targetTaps) {
-        this.failRound();
-      }
+    if (level.type === 'multiTap' || level.type === 'wordCountTap') {
+      this.handleCountTap(level);
       return;
     }
 
@@ -85,37 +65,16 @@ export class PressureGame {
     }
   }
 
-  handleChoice(choice) {
-    const level = getCurrentLevel(this.state);
+  handleCountTap(level) {
+    this.state.taps += 1;
+    renderTapCount(this.elements, this.state.taps, level.targetTaps);
 
-    if (level.type === 'choice') {
-      if (choice === level.answer) {
-        this.winRound();
-        return;
-      }
-
-      this.failRound();
-      return;
-    }
-
-    if (level.type === 'memory') {
-      this.handleMemoryChoice(choice, level);
-    }
-  }
-
-  handleMemoryChoice(choice, level) {
-    const expected = level.sequence[this.state.memoryIndex];
-
-    if (choice !== expected) {
-      this.failRound();
-      return;
-    }
-
-    this.state.memoryIndex += 1;
-    renderResult(this.elements, `${this.state.memoryIndex}/${level.sequence.length}`, 'warning');
-
-    if (this.state.memoryIndex === level.sequence.length) {
+    if (this.state.taps === level.targetTaps) {
       this.winRound();
+    }
+
+    if (this.state.taps > level.targetTaps) {
+      this.failRound();
     }
   }
 
