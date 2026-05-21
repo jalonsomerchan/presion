@@ -2,6 +2,7 @@ export const renderLevel = ({ elements, level }) => {
   elements.buttonLabel.textContent = level.buttonText;
   elements.status.textContent = '';
   elements.actionRing.dataset.mode = level.type;
+  elements.actionRing.dataset.result = 'neutral';
   elements.actionRing.style.setProperty('--progress', '1');
   elements.pressureButton.disabled = false;
 };
