@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Presión es un juego web de reflejos, nervios y lógica tramposa con niveles configurables en JSON. Pulsa, espera, memoriza y no caigas."
+      content="Presión es un juego web de reflejos, nervios y lógica tramposa con niveles configurables en JSON. Pulsa, espera, cuenta y no caigas."
     />
     <meta property="og:title" content="Presión · juego de reflejos" />
     <meta
@@ -28,7 +28,7 @@
         <p class="eyebrow">modo presión</p>
         <h1 id="home-title">Presión</h1>
         <p class="screen-copy">
-          Lee rápido, no te fíes del botón y supera cada nivel para desbloquear el siguiente.
+          Lee el botón, cuenta rápido y decide si tocarlo o dejarlo en paz.
         </p>
         <button class="primary-action" type="button" data-play>Jugar</button>
       </section>
@@ -41,32 +41,17 @@
       </section>
 
       <section class="arena is-hidden" data-screen="game" aria-label="Zona de juego">
-        <div class="hud" aria-label="Estado de partida">
-          <p><span>Nivel</span><strong data-level-current>1</strong>/<strong data-level-total>4</strong></p>
-          <p><span>Etapa</span><strong data-stage-current>1</strong>/<strong data-stage-total>4</strong></p>
-          <p><span>Vidas</span><strong data-lives>3</strong></p>
+        <div class="action-ring" data-action-ring style="--progress: 1">
+          <button class="pressure-button" type="button" data-pressure-button>
+            <span data-button-label>pulsa</span>
+          </button>
         </div>
 
-        <article class="challenge-card" data-card>
-          <p class="challenge-kicker" data-level-type>calentamiento</p>
-          <h2 data-level-title>Preparando presión...</h2>
-          <p class="challenge-copy" data-level-instruction>Cargando niveles.</p>
-          <p class="challenge-status" data-status>Respira mientras puedas.</p>
-
-          <div class="memory-strip" data-memory-strip aria-label="Secuencia a memorizar"></div>
-
-          <div class="action-ring" data-action-ring style="--progress: 1">
-            <button class="pressure-button" type="button" data-pressure-button>
-              <span data-button-label>pulsa</span>
-            </button>
-
-            <div class="choice-grid" data-choice-grid aria-label="Opciones del nivel"></div>
-          </div>
-        </article>
+        <p class="challenge-status" data-status>Respira mientras puedas.</p>
 
         <div class="controls">
-          <button class="secondary-button" type="button" data-back-levels>Elegir nivel</button>
           <button class="secondary-button" type="button" data-restart>Reiniciar</button>
+          <button class="secondary-button" type="button" data-back-levels>Inicio</button>
         </div>
       </section>
     </main>
