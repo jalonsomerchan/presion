@@ -1,42 +1,35 @@
 {
   "nivel": 3,
-  "nombre": "Memoria nerviosa",
-  "normas": "Memoriza secuencias cortas y repítelas con presión de tiempo.",
+  "nombre": "Trampas de lectura",
+  "normas": "Todo se resuelve con el botón. A veces contarás palabras, a veces tendrás que no hacer nada.",
   "etapas": [
     {
-      "id": "n3-321",
-      "type": "memory",
-      "title": "Cuenta atrás",
-      "instruction": "Repite la secuencia en orden: 3, 2, 1.",
-      "sequence": ["3", "2", "1"],
-      "choices": ["1", "2", "3", "4"],
-      "timeLimit": 9000
+      "id": "n3-cuatro-palabras",
+      "type": "wordCountTap",
+      "buttonText": "Cuenta estas cuatro palabras",
+      "targetTaps": 4,
+      "timeLimit": 7000
     },
     {
-      "id": "n3-colores",
-      "type": "memory",
-      "title": "Color mental",
-      "instruction": "Repite la secuencia: azul, rojo, azul.",
-      "sequence": ["azul", "rojo", "azul"],
-      "choices": ["rojo", "azul", "verde", "negro"],
-      "timeLimit": 9500
+      "id": "n3-raton-escondido",
+      "type": "tapIfEmoji",
+      "buttonText": "Hay un ratón escondido 🐭",
+      "emoji": "🐭",
+      "shouldTap": true,
+      "timeLimit": 5000
+    },
+    {
+      "id": "n3-no-raton",
+      "type": "avoidTap",
+      "buttonText": "Hay un ratón escondido 🐹",
+      "timeLimit": 5000
     },
     {
       "id": "n3-cinco",
       "type": "multiTap",
-      "title": "Cinco golpes",
-      "instruction": "Pulsa cinco veces sin pasarte.",
-      "buttonLabel": "x5",
+      "buttonText": "Pulsa cinco exactas",
       "targetTaps": 5,
       "timeLimit": 4300
-    },
-    {
-      "id": "n3-no-tocar",
-      "type": "avoidTap",
-      "title": "Aguanta",
-      "instruction": "No toques el botón aunque parezca fácil.",
-      "buttonLabel": "quieto",
-      "timeLimit": 4800
     }
   ]
 }

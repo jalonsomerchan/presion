@@ -1,42 +1,33 @@
 {
   "nivel": 4,
-  "nombre": "Caos controlado",
-  "normas": "Combina espera, memoria y respuestas tramposas. Si dudas, pierdes tiempo.",
+  "nombre": "Presión total",
+  "normas": "La pregunta vive dentro del botón. No hay respuestas externas ni pistas fuera del círculo.",
   "etapas": [
     {
-      "id": "n4-inverso",
-      "type": "choice",
-      "title": "Inverso",
-      "instruction": "Elige la opción más pequeña.",
-      "choices": ["9", "7", "1", "4"],
-      "answer": "1",
-      "timeLimit": 5200
+      "id": "n4-dos-palabras",
+      "type": "wordCountTap",
+      "buttonText": "Solo dos",
+      "targetTaps": 2,
+      "timeLimit": 4300
     },
     {
-      "id": "n4-secuencia",
-      "type": "memory",
-      "title": "Patrón",
-      "instruction": "Repite: A, B, A, C.",
-      "sequence": ["A", "B", "A", "C"],
-      "choices": ["A", "B", "C", "D"],
-      "timeLimit": 10500
+      "id": "n4-falso-raton",
+      "type": "avoidTap",
+      "buttonText": "Pulsa si aparece un ratón 🐰",
+      "timeLimit": 4500
     },
     {
-      "id": "n4-tarde",
-      "type": "waitThenTap",
-      "title": "Último segundo",
-      "instruction": "Espera a AHORA. Pulsar antes reinicia la etapa.",
-      "buttonLabel": "espera",
-      "readyLabel": "ahora",
-      "waitTime": 3300,
-      "timeLimit": 6200
+      "id": "n4-raton-real",
+      "type": "tapIfEmoji",
+      "buttonText": "Pulsa si aparece un ratón 🐭",
+      "emoji": "🐭",
+      "shouldTap": true,
+      "timeLimit": 3800
     },
     {
       "id": "n4-final",
       "type": "multiTap",
-      "title": "Final",
-      "instruction": "Pulsa cuatro veces exactas para completar el juego.",
-      "buttonLabel": "x4",
+      "buttonText": "Cuatro pulsos finales",
       "targetTaps": 4,
       "timeLimit": 3900
     }

@@ -1,41 +1,33 @@
 {
   "nivel": 1,
   "nombre": "Pulso inicial",
-  "normas": "Aprende a leer antes de tocar. Cada etapa tiene una condición concreta y el tiempo rodea la acción principal.",
+  "normas": "Solo hay un botón. Lee lo que pone dentro y decide si pulsar, esperar o contar.",
   "etapas": [
     {
       "id": "n1-rapido",
       "type": "tap",
-      "title": "Pulsa una vez",
-      "instruction": "Pulsa el botón antes de que se agote el círculo.",
-      "buttonLabel": "pulsa",
+      "buttonText": "Pulsa una vez",
       "timeLimit": 5200
     },
     {
       "id": "n1-espera",
       "type": "waitThenTap",
-      "title": "Espera la señal",
-      "instruction": "No pulses hasta que el botón cambie a AHORA.",
-      "buttonLabel": "espera",
-      "readyLabel": "ahora",
+      "buttonText": "No pulses todavía",
+      "readyText": "Ahora sí",
       "waitTime": 2100,
       "timeLimit": 6200
     },
     {
       "id": "n1-doble",
       "type": "multiTap",
-      "title": "Dos toques",
-      "instruction": "Pulsa exactamente dos veces.",
-      "buttonLabel": "x2",
+      "buttonText": "Pulsa dos veces",
       "targetTaps": 2,
       "timeLimit": 5200
     },
     {
       "id": "n1-no",
       "type": "avoidTap",
-      "title": "Quieto",
-      "instruction": "No pulses nada hasta que termine el tiempo.",
-      "buttonLabel": "no",
+      "buttonText": "No me pulses",
       "timeLimit": 4200
     }
   ]

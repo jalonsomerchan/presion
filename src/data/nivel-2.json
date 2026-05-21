@@ -1,44 +1,35 @@
 {
   "nivel": 2,
-  "nombre": "Decisiones raras",
-  "normas": "Las respuestas sustituyen al botón. Elige por texto y no por intuición visual.",
+  "nombre": "Cuenta y mira",
+  "normas": "Algunas etapas se superan pulsando las veces que indica el texto o solo si aparece una señal concreta.",
   "etapas": [
     {
-      "id": "n2-palabra",
-      "type": "choice",
-      "title": "Lee la palabra",
-      "instruction": "Elige la opción que dice MORADO.",
-      "choices": ["rojo", "morado", "azul", "verde"],
-      "answer": "morado",
+      "id": "n2-palabras",
+      "type": "wordCountTap",
+      "buttonText": "Pulsa según palabras",
+      "targetTaps": 3,
       "timeLimit": 6500
     },
     {
-      "id": "n2-nada",
-      "type": "choice",
-      "title": "No sigas",
-      "instruction": "La respuesta correcta es la que no parece avanzar.",
-      "choices": ["seguir", "correr", "nada", "subir"],
-      "answer": "nada",
-      "timeLimit": 5800
+      "id": "n2-raton-si",
+      "type": "tapIfEmoji",
+      "buttonText": "Pulsa si ves un ratón 🐭",
+      "emoji": "🐭",
+      "shouldTap": true,
+      "timeLimit": 5200
+    },
+    {
+      "id": "n2-raton-no",
+      "type": "avoidTap",
+      "buttonText": "Pulsa si ves un ratón 🐱",
+      "timeLimit": 4500
     },
     {
       "id": "n2-tres",
       "type": "multiTap",
-      "title": "Tres exactas",
-      "instruction": "Pulsa tres veces. La cuarta falla.",
-      "buttonLabel": "x3",
+      "buttonText": "Tres, solo tres",
       "targetTaps": 3,
       "timeLimit": 4700
-    },
-    {
-      "id": "n2-final",
-      "type": "waitThenTap",
-      "title": "Tarde, no pronto",
-      "instruction": "Espera a AHORA y pulsa una sola vez.",
-      "buttonLabel": "espera",
-      "readyLabel": "ahora",
-      "waitTime": 2600,
-      "timeLimit": 6200
     }
   ]
 }
