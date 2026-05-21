@@ -1,34 +1,33 @@
 {
   "nivel": 2,
-  "nombre": "Cuenta y mira",
-  "normas": "Cuenta palabras reales y mira el símbolo: el ratón manda más que el texto.",
+  "nombre": "Símbolos mentirosos",
+  "normas": "El texto puede mentir. El símbolo que se pide manda más que la frase.",
   "etapas": [
     {
       "id": "n2-palabras",
       "type": "wordCountTap",
       "buttonText": "Pulsa por cada palabra",
-      "targetTaps": 4,
       "timeLimit": 6500
     },
     {
-      "id": "n2-raton-si",
+      "id": "n2-bomba-real",
       "type": "tapIfEmoji",
-      "buttonText": "Pulsa cuando veas un ratón 🐭",
-      "emoji": "🐭",
+      "buttonText": "Pulsa si ves peligro 💣",
+      "emoji": "💣",
       "timeLimit": 5200
     },
     {
-      "id": "n2-gato-no",
+      "id": "n2-falsa-bomba",
       "type": "avoidTap",
-      "buttonText": "Pulsa cuando veas un ratón 🐱",
+      "buttonText": "Pulsa si ves peligro 🎈",
       "timeLimit": 4500
     },
     {
-      "id": "n2-tres",
-      "type": "multiTap",
-      "buttonText": "Toca hasta contar bien",
-      "targetTaps": 5,
-      "timeLimit": 4700
+      "id": "n2-gotas",
+      "type": "emojiCountTap",
+      "buttonText": "Cuenta las gotas 💧 viento 💧 nube 💧",
+      "emoji": "💧",
+      "timeLimit": 6500
     }
   ]
 }
