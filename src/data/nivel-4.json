@@ -1,0 +1,44 @@
+{
+  "nivel": 4,
+  "nombre": "Caos controlado",
+  "normas": "Combina espera, memoria y respuestas tramposas. Si dudas, pierdes tiempo.",
+  "etapas": [
+    {
+      "id": "n4-inverso",
+      "type": "choice",
+      "title": "Inverso",
+      "instruction": "Elige la opción más pequeña.",
+      "choices": ["9", "7", "1", "4"],
+      "answer": "1",
+      "timeLimit": 5200
+    },
+    {
+      "id": "n4-secuencia",
+      "type": "memory",
+      "title": "Patrón",
+      "instruction": "Repite: A, B, A, C.",
+      "sequence": ["A", "B", "A", "C"],
+      "choices": ["A", "B", "C", "D"],
+      "timeLimit": 10500
+    },
+    {
+      "id": "n4-tarde",
+      "type": "waitThenTap",
+      "title": "Último segundo",
+      "instruction": "Espera a AHORA. Pulsar antes reinicia la etapa.",
+      "buttonLabel": "espera",
+      "readyLabel": "ahora",
+      "waitTime": 3300,
+      "timeLimit": 6200
+    },
+    {
+      "id": "n4-final",
+      "type": "multiTap",
+      "title": "Final",
+      "instruction": "Pulsa cuatro veces exactas para completar el juego.",
+      "buttonLabel": "x4",
+      "targetTaps": 4,
+      "timeLimit": 3900
+    }
+  ]
+}
