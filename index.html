@@ -5,132 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Template moderno para proyectos HTML, CSS y JavaScript con Tailwind CSS"
+      content="Presión es un juego web de reflejos, nervios y lógica tramposa con niveles configurables en JSON. Pulsa, espera, memoriza y no caigas."
     />
+    <meta
+      property="og:title"
+      content="Presión · juego de reflejos y decisiones absurdas"
+    />
+    <meta
+      property="og:description"
+      content="Un botón enorme, instrucciones sospechosas y niveles cada vez más tensos."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#120017" />
 
-    <title>JS Template</title>
+    <title>Presión · juego de reflejos</title>
 
-    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./public/favicon.svg" type="image/svg+xml" />
   </head>
 
-  <body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased">
-    <header class="border-b border-white/10 bg-black/20 backdrop-blur-xl">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a class="flex items-center gap-3 font-bold tracking-tight" href="/">
-          <img src="/src/assets/logo.svg" alt="Logo" class="size-9" />
-          <span>JS Template</span>
-        </a>
+  <body
+    class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"
+  >
+    <a class="skip-link" href="#game">Saltar al juego</a>
 
-        <nav>
-          <ul class="flex items-center gap-6 text-sm text-zinc-300">
-            <li><a class="hover:text-white" href="#features">Características</a></li>
-            <li><a class="hover:text-white" href="#stack">Stack</a></li>
-            <li><a class="hover:text-white" href="#start">Inicio</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <main id="game" class="game-shell" aria-live="polite">
+      <section class="hero-panel" aria-labelledby="game-title">
+        <p class="eyebrow">modo presión activado</p>
+        <h1 id="game-title">Presión</h1>
+        <p class="hero-copy">
+          Un botón gigante. Reglas que cambian. Cero piedad. Los niveles viven
+          en JSON para que puedas ampliar el caos cuando quieras.
+        </p>
+      </section>
 
-    <main>
-      <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.18),transparent_40%)]"></div>
-
-        <div class="relative mx-auto flex max-w-7xl flex-col px-6 py-24 lg:py-36">
-          <span class="mb-6 inline-flex w-fit rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-sm font-medium text-blue-300">
-            HTML · JavaScript · Tailwind CSS
-          </span>
-
-          <h1 class="max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
-            Template moderno para proyectos frontend.
-          </h1>
-
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
-            Base profesional preparada para crear aplicaciones web rápidas,
-            escalables y mantenibles usando Vite y Tailwind CSS.
-          </p>
-
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#start"
-              class="rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:scale-[1.02]"
+      <section class="arena" aria-label="Zona de juego">
+        <div class="hud" aria-label="Estado de partida">
+          <p>
+            <span>Nivel</span><strong data-level-current>1</strong>/<strong
+              data-level-total
+              >0</strong
             >
-              Empezar
-            </a>
-
-            <a
-              href="#features"
-              class="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
-            >
-              Ver estructura
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section id="features" class="mx-auto max-w-7xl px-6 py-20">
-        <div class="mb-10">
-          <h2 class="text-4xl font-black tracking-tight text-white">Características</h2>
-          <p class="mt-3 text-zinc-400">
-            Preparado para producción siguiendo estándares modernos.
           </p>
+          <p><span>Vidas</span><strong data-lives>3</strong></p>
+          <p><span>Tiempo</span><strong data-time>--</strong></p>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-xl font-bold text-white">Vite</h3>
-            <p class="mt-3 text-zinc-400">
-              Desarrollo ultrarrápido y build optimizado.
-            </p>
-          </article>
+        <article class="challenge-card" data-card>
+          <p class="challenge-kicker" data-level-type>calentamiento</p>
+          <h2 data-level-title>Preparando presión...</h2>
+          <p class="challenge-copy" data-level-instruction>Cargando niveles.</p>
+          <p class="challenge-status" data-status>Respira mientras puedas.</p>
 
-          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-xl font-bold text-white">Tailwind CSS</h3>
-            <p class="mt-3 text-zinc-400">
-              Utilidades modernas y workflow profesional.
-            </p>
-          </article>
+          <div
+            class="memory-strip"
+            data-memory-strip
+            aria-label="Secuencia a memorizar"
+          ></div>
 
-          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-xl font-bold text-white">ESLint</h3>
-            <p class="mt-3 text-zinc-400">
-              Código consistente y mantenible.
-            </p>
-          </article>
+          <button class="pressure-button" type="button" data-pressure-button>
+            <span data-button-label>pulsa</span>
+          </button>
 
-          <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h3 class="text-xl font-bold text-white">GitHub Actions</h3>
-            <p class="mt-3 text-zinc-400">
-              Validación automática de calidad.
-            </p>
-          </article>
-        </div>
-      </section>
+          <div
+            class="choice-grid"
+            data-choice-grid
+            aria-label="Opciones del nivel"
+          ></div>
+        </article>
 
-      <section id="stack" class="mx-auto max-w-7xl px-6 pb-20">
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-          <h2 class="text-3xl font-black tracking-tight text-white">Stack incluido</h2>
-
-          <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">HTML5 semántico</div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">JavaScript ES Modules</div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">Tailwind CSS v4</div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">Vite</div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">ESLint</div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-4">Prettier</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="start" class="mx-auto max-w-7xl px-6 pb-24">
-        <div class="rounded-3xl border border-white/10 bg-zinc-900 p-8">
-          <h2 class="text-3xl font-black tracking-tight text-white">Inicio rápido</h2>
-
-          <pre class="mt-6 overflow-x-auto rounded-2xl border border-white/10 bg-black p-6 text-sm text-green-400"><code>npm install
-npm run dev</code></pre>
+        <div class="controls">
+          <button class="secondary-button" type="button" data-restart>
+            Reiniciar
+          </button>
+          <button class="secondary-button" type="button" data-next>
+            Nivel siguiente
+          </button>
         </div>
       </section>
     </main>
 
-    <script type="module" src="/src/js/app.js"></script>
+    <script type="module" src="./src/js/app.js"></script>
   </body>
 </html>

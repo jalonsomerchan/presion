@@ -1,64 +1,38 @@
-# JS Template
+# Presión
 
-Template moderno para proyectos frontend con HTML, JavaScript, Vite y Tailwind CSS.
+Juego web de reflejos, memoria y decisiones tramposas inspirado en retos de botón bajo presión.
 
-## Stack
+## Características
 
-- Vite
-- Tailwind CSS v4
-- ESLint
-- Prettier
-- GitHub Actions
-
-## Instalación
-
-```bash
-npm install
-```
+- Interfaz visual neón, responsive y accesible.
+- Juego modular con lógica separada en `src/js/game/`.
+- Niveles configurables en `src/data/levels.json`.
+- Preparado para funcionar en dominio raíz, subruta y GitHub Pages.
+- Workflows de CI y despliegue a Pages.
 
 ## Desarrollo
 
-```bash
+```sh
+npm install
 npm run dev
-```
-
-## Build
-
-```bash
+npm run lint
+npm run format:check
 npm run build
 ```
 
-## Lint
+## Añadir niveles
 
-```bash
-npm run lint
-```
+Edita `src/data/levels.json` y añade objetos con estos tipos soportados:
 
-## Formatear código
+- `tap`: pulsar una vez dentro del tiempo.
+- `waitThenTap`: esperar una señal antes de pulsar.
+- `multiTap`: pulsar un número exacto de veces.
+- `avoidTap`: aguantar sin pulsar.
+- `choice`: elegir una opción correcta.
+- `memory`: repetir una secuencia.
 
-```bash
-npm run format
-```
+## Despliegue
 
-## Documentación para agentes IA
+El workflow `.github/workflows/pages.yml` construye `dist/` y lo publica en GitHub Pages al hacer push a `main`.
 
-Este repositorio incluye reglas y guías para trabajar con agentes IA y GitHub API:
-
-- `AGENTS.md`: reglas obligatorias para agentes, issues, PRs y cambios de código.
-- `docs/design-system.md`: criterios visuales, accesibilidad y UI.
-- `docs/template-usage.md`: uso del template y convenciones de estructura.
-- `docs/deployment-guide.md`: despliegue en raíz, subruta y GitHub Pages.
-- `docs/testing-guide.md`: checks de lint, formato, build y calidad.
-
-## Estructura
-
-```txt
-src/
-├── assets/
-├── css/
-└── js/
-```
-
-## Licencia
-
-MIT
+La configuración de Vite usa `base` compatible con Pages durante GitHub Actions y rutas relativas en desarrollo/local.
