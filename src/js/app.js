@@ -18,8 +18,6 @@ const elements = {
   restart: query('[data-restart]'),
   backLevels: query('[data-back-levels]'),
   actionRing: query('[data-action-ring]'),
-  arena: query('[data-screen="game"]'),
-  chaosLayer: query('[data-chaos-layer]'),
 };
 
 const levelSelect = query('[data-level-select]');

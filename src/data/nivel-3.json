@@ -1,34 +1,35 @@
 {
   "nivel": 3,
-  "nombre": "Trampas de lectura",
-  "normas": "No obedezcas solo la frase: si aparece el ratón, toca aunque el texto intente engañarte.",
+  "nombre": "Reglas cruzadas",
+  "normas": "Cuenta lo que se pide, ignora señuelos y no pulses por costumbre.",
   "etapas": [
     {
-      "id": "n3-palabras",
-      "type": "wordCountTap",
-      "buttonText": "Cuenta solo palabras reales",
-      "targetTaps": 4,
-      "timeLimit": 7000
+      "id": "n3-letra-a",
+      "type": "letterCountTap",
+      "buttonText": "La alarma llama al alba",
+      "letter": "a",
+      "timeLimit": 7500
     },
     {
-      "id": "n3-raton-ordena-no",
+      "id": "n3-no-pulses-fuego",
       "type": "tapIfEmoji",
-      "buttonText": "No pulses nada 🐭",
-      "emoji": "🐭",
-      "timeLimit": 5000
+      "buttonText": "No pulses aunque arda 🔥",
+      "emoji": "🔥",
+      "timeLimit": 4800
     },
     {
-      "id": "n3-hamster-despista",
+      "id": "n3-falso-fuego",
       "type": "avoidTap",
-      "buttonText": "No pulses nada 🐹",
+      "buttonText": "No pulses aunque brille ✨",
       "timeLimit": 5000
     },
     {
-      "id": "n3-cinco",
-      "type": "multiTap",
-      "buttonText": "Pulsa sin perder la cuenta",
-      "targetTaps": 5,
-      "timeLimit": 4300
+      "id": "n3-espera-final",
+      "type": "waitThenTap",
+      "buttonText": "Lee y espera",
+      "readyText": "Ahora pulsa",
+      "waitTime": 2800,
+      "timeLimit": 6500
     }
   ]
 }

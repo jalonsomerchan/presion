@@ -2,7 +2,8 @@ import { getCurrentLevel, resetRoundFlags } from './state.js';
 import { renderLevel, renderResult, renderTapCount } from './render.js';
 import { FAIL_MESSAGES, WIN_MESSAGES, pickMessage } from './messages.js';
 import { clearGameTimers, startCountdown } from './timers.js';
-import { animatePress, clearChaos, renderChaos } from './chaos.js';
+import { animatePress } from './feedback.js';
+import { getTargetTaps, isCountTap, shouldAvoidTap, shouldTapOnce } from './rules.js';
 
 export class PressureGame {
   constructor({ elements, state, onLevelComplete }) {
@@ -27,11 +28,6 @@ export class PressureGame {
     const level = getCurrentLevel(this.state);
 
     renderLevel({ elements: this.elements, level });
-    renderChaos({
-      elements: this.elements,
-      levelPack: this.state.levelPack,
-      stageIndex: this.state.currentIndex,
-    });
 
     startCountdown({
       elements: this.elements,
@@ -52,7 +48,7 @@ export class PressureGame {
     clearGameTimers(this.state);
     const level = getCurrentLevel(this.state);
 
-    if (level.type === 'avoidTap') {
+    if (shouldAvoidTap(level)) {
       this.state.completed ? this.failRound() : this.completeStage();
       return;
     }
@@ -64,7 +60,7 @@ export class PressureGame {
     animatePress(this.elements);
     const level = getCurrentLevel(this.state);
 
-    if (level.type === 'tap' || level.type === 'tapIfEmoji') {
+    if (shouldTapOnce(level)) {
       this.markCompleted();
       return;
     }
@@ -74,26 +70,27 @@ export class PressureGame {
       return;
     }
 
-    if (level.type === 'multiTap' || level.type === 'wordCountTap') {
+    if (isCountTap(level)) {
       this.handleCountTap(level);
       return;
     }
 
-    if (level.type === 'avoidTap') {
+    if (shouldAvoidTap(level)) {
       this.state.completed = true;
       this.failRound();
     }
   }
 
   handleCountTap(level) {
+    const targetTaps = getTargetTaps(level);
     this.state.taps += 1;
-    renderTapCount(this.elements, this.state.taps, level.targetTaps);
+    renderTapCount(this.elements, this.state.taps, targetTaps);
 
-    if (this.state.taps === level.targetTaps) {
+    if (this.state.taps === targetTaps) {
       this.markCompleted();
     }
 
-    if (this.state.taps > level.targetTaps) {
+    if (this.state.taps > targetTaps) {
       this.failRound();
     }
   }
@@ -148,6 +145,5 @@ export class PressureGame {
 
   stop() {
     clearGameTimers(this.state);
-    clearChaos(this.elements);
   }
 }
