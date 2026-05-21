@@ -1,34 +1,34 @@
 {
   "nivel": 4,
-  "nombre": "Presión total",
-  "normas": "La regla del ratón se mantiene incluso cuando el botón diga lo contrario.",
+  "nombre": "Última lógica",
+  "normas": "Aquí el botón juega con símbolos, letras y órdenes contradictorias.",
   "etapas": [
     {
-      "id": "n4-dos-palabras",
+      "id": "n4-palabras-sin-pista",
       "type": "wordCountTap",
-      "buttonText": "Cuenta palabras sin número",
-      "targetTaps": 4,
-      "timeLimit": 5000
+      "buttonText": "Cada sombra cuenta distinto",
+      "timeLimit": 5200
     },
     {
-      "id": "n4-falso-raton",
-      "type": "avoidTap",
-      "buttonText": "Pulsa si aparece un ratón 🐰",
-      "timeLimit": 4500
+      "id": "n4-lunas",
+      "type": "emojiCountTap",
+      "buttonText": "🌙 sol 🌙 estrella 🌙 noche",
+      "emoji": "🌙",
+      "timeLimit": 6500
     },
     {
-      "id": "n4-raton-real",
+      "id": "n4-no-pulses-llave",
       "type": "tapIfEmoji",
-      "buttonText": "No pulses aunque aparezca 🐭",
-      "emoji": "🐭",
-      "timeLimit": 3800
+      "buttonText": "No pulses si aparece la llave 🔑",
+      "emoji": "🔑",
+      "timeLimit": 4200
     },
     {
-      "id": "n4-final",
-      "type": "multiTap",
-      "buttonText": "Final: no te pases",
-      "targetTaps": 4,
-      "timeLimit": 3900
+      "id": "n4-cierra",
+      "type": "letterCountTap",
+      "buttonText": "Cierra el círculo secreto",
+      "letter": "e",
+      "timeLimit": 6500
     }
   ]
 }
