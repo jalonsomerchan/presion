@@ -16,7 +16,6 @@ Juego web de reflejos, memoria y decisiones tramposas inspirado en retos de bot√
 npm install
 npm run dev
 npm run lint
-npm run format:check
 npm run build
 ```
 
