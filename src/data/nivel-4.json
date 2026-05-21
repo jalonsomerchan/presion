@@ -1,14 +1,14 @@
 {
   "nivel": 4,
   "nombre": "Presión total",
-  "normas": "La pregunta vive dentro del botón. No hay respuestas externas ni pistas fuera del círculo.",
+  "normas": "La regla del ratón se mantiene incluso cuando el botón diga lo contrario.",
   "etapas": [
     {
       "id": "n4-dos-palabras",
       "type": "wordCountTap",
-      "buttonText": "Solo dos",
-      "targetTaps": 2,
-      "timeLimit": 4300
+      "buttonText": "Cuenta palabras sin número",
+      "targetTaps": 4,
+      "timeLimit": 5000
     },
     {
       "id": "n4-falso-raton",
@@ -19,15 +19,14 @@
     {
       "id": "n4-raton-real",
       "type": "tapIfEmoji",
-      "buttonText": "Pulsa si aparece un ratón 🐭",
+      "buttonText": "No pulses aunque aparezca 🐭",
       "emoji": "🐭",
-      "shouldTap": true,
       "timeLimit": 3800
     },
     {
       "id": "n4-final",
       "type": "multiTap",
-      "buttonText": "Cuatro pulsos finales",
+      "buttonText": "Final: no te pases",
       "targetTaps": 4,
       "timeLimit": 3900
     }

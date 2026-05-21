@@ -1,34 +1,33 @@
 {
   "nivel": 2,
   "nombre": "Cuenta y mira",
-  "normas": "Algunas etapas se superan pulsando las veces que indica el texto o solo si aparece una señal concreta.",
+  "normas": "Cuenta palabras reales y mira el símbolo: el ratón manda más que el texto.",
   "etapas": [
     {
       "id": "n2-palabras",
       "type": "wordCountTap",
-      "buttonText": "Pulsa según palabras",
-      "targetTaps": 3,
+      "buttonText": "Pulsa por cada palabra",
+      "targetTaps": 4,
       "timeLimit": 6500
     },
     {
       "id": "n2-raton-si",
       "type": "tapIfEmoji",
-      "buttonText": "Pulsa si ves un ratón 🐭",
+      "buttonText": "Pulsa cuando veas un ratón 🐭",
       "emoji": "🐭",
-      "shouldTap": true,
       "timeLimit": 5200
     },
     {
-      "id": "n2-raton-no",
+      "id": "n2-gato-no",
       "type": "avoidTap",
-      "buttonText": "Pulsa si ves un ratón 🐱",
+      "buttonText": "Pulsa cuando veas un ratón 🐱",
       "timeLimit": 4500
     },
     {
       "id": "n2-tres",
       "type": "multiTap",
-      "buttonText": "Tres, solo tres",
-      "targetTaps": 3,
+      "buttonText": "Toca hasta contar bien",
+      "targetTaps": 5,
       "timeLimit": 4700
     }
   ]

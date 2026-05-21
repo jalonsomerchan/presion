@@ -31,7 +31,7 @@ export class PressureGame {
       elements: this.elements,
       state: this.state,
       duration: level.timeLimit,
-      onEnd: () => (level.type === 'avoidTap' ? this.winRound() : this.failRound()),
+      onEnd: () => this.finishStage(),
     });
 
     if (level.type === 'waitThenTap') {
@@ -42,16 +42,28 @@ export class PressureGame {
     }
   }
 
+  finishStage() {
+    clearGameTimers(this.state);
+    const level = getCurrentLevel(this.state);
+
+    if (level.type === 'avoidTap') {
+      this.state.completed ? this.failRound() : this.completeStage();
+      return;
+    }
+
+    this.state.completed ? this.completeStage() : this.failRound();
+  }
+
   handlePress() {
     const level = getCurrentLevel(this.state);
 
     if (level.type === 'tap' || level.type === 'tapIfEmoji') {
-      this.winRound();
+      this.markCompleted();
       return;
     }
 
     if (level.type === 'waitThenTap') {
-      this.state.ready ? this.winRound() : this.failRound();
+      this.state.ready ? this.markCompleted() : this.failRound();
       return;
     }
 
@@ -61,6 +73,7 @@ export class PressureGame {
     }
 
     if (level.type === 'avoidTap') {
+      this.state.completed = true;
       this.failRound();
     }
   }
@@ -70,7 +83,7 @@ export class PressureGame {
     renderTapCount(this.elements, this.state.taps, level.targetTaps);
 
     if (this.state.taps === level.targetTaps) {
-      this.winRound();
+      this.markCompleted();
     }
 
     if (this.state.taps > level.targetTaps) {
@@ -78,8 +91,17 @@ export class PressureGame {
     }
   }
 
-  winRound() {
-    clearGameTimers(this.state);
+  markCompleted() {
+    if (this.state.completed) {
+      this.failRound();
+      return;
+    }
+
+    this.state.completed = true;
+    renderResult(this.elements, 'Bien. Espera...', 'success');
+  }
+
+  completeStage() {
     renderResult(this.elements, pickMessage(WIN_MESSAGES), 'success');
 
     window.setTimeout(() => {
@@ -92,7 +114,7 @@ export class PressureGame {
 
       this.state.currentIndex = nextIndex;
       this.loadLevel();
-    }, 850);
+    }, 550);
   }
 
   failRound() {
