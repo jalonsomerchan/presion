@@ -1,0 +1,42 @@
+{
+  "nivel": 3,
+  "nombre": "Memoria nerviosa",
+  "normas": "Memoriza secuencias cortas y repítelas con presión de tiempo.",
+  "etapas": [
+    {
+      "id": "n3-321",
+      "type": "memory",
+      "title": "Cuenta atrás",
+      "instruction": "Repite la secuencia en orden: 3, 2, 1.",
+      "sequence": ["3", "2", "1"],
+      "choices": ["1", "2", "3", "4"],
+      "timeLimit": 9000
+    },
+    {
+      "id": "n3-colores",
+      "type": "memory",
+      "title": "Color mental",
+      "instruction": "Repite la secuencia: azul, rojo, azul.",
+      "sequence": ["azul", "rojo", "azul"],
+      "choices": ["rojo", "azul", "verde", "negro"],
+      "timeLimit": 9500
+    },
+    {
+      "id": "n3-cinco",
+      "type": "multiTap",
+      "title": "Cinco golpes",
+      "instruction": "Pulsa cinco veces sin pasarte.",
+      "buttonLabel": "x5",
+      "targetTaps": 5,
+      "timeLimit": 4300
+    },
+    {
+      "id": "n3-no-tocar",
+      "type": "avoidTap",
+      "title": "Aguanta",
+      "instruction": "No toques el botón aunque parezca fácil.",
+      "buttonLabel": "quieto",
+      "timeLimit": 4800
+    }
+  ]
+}
