@@ -12,8 +12,13 @@ export const renderResult = (elements, message, variant) => {
   elements.actionRing.dataset.result = variant;
 };
 
-export const renderTapCount = (elements, currentTaps, targetTaps) => {
-  elements.status.textContent = `${currentTaps}/${targetTaps}`;
+export const renderSilentResult = (elements, variant) => {
+  elements.status.textContent = '';
+  elements.actionRing.dataset.result = variant;
+};
+
+export const renderTapCount = (elements) => {
+  elements.status.textContent = '';
 };
 
 export const renderTime = (elements, milliseconds, duration) => {
